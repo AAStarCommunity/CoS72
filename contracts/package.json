@@ -1,0 +1,49 @@
+{
+  "name": "@cos72/task-contracts",
+  "version": "1.0.0",
+  "description": "COS72 Task Square Smart Contracts",
+  "main": "index.js",
+  "scripts": {
+    "build": "forge build",
+    "test": "forge test",
+    "test-gas": "forge test --gas-report",
+    "test-fuzz": "forge test --fuzz-runs 1000",
+    "test-coverage": "forge coverage",
+    "deploy:sepolia": "forge script script/Deploy.s.sol --rpc-url sepolia --broadcast --verify",
+    "verify:sepolia": "forge verify-contract --chain-id 11155111",
+    "clean": "forge clean",
+    "fmt": "forge fmt",
+    "snapshot": "forge snapshot",
+    "anvil": "anvil --fork-url ${SEPOLIA_RPC_URL}"
+  },
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart-contracts",
+    "cos72",
+    "task-management",
+    "jury-system",
+    "dispute-resolution"
+  ],
+  "author": "COS72 Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "foundry-rust": "^0.2.0",
+    "ethers": "^6.9.1"
+  },
+  "dependencies": {
+    "@aastar/shared-config": "^0.3.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cos72/task-contracts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cos72/task-contracts/issues"
+  },
+  "homepage": "https://github.com/cos72/task-contracts#readme"
+}

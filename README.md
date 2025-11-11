@@ -1,77 +1,132 @@
-# Cos72
-## Introduction
+# V1
+产品计划：COS72 任务广场**
 
-Yet Another DAO/Community Tool, BUT: get a Gasless,NFT,Contract Account, and ENS, with your Email on any Super Chain. 
-Initiate for Superhack 2024 hackathon. 
-Build based on: 
-+ Super Chain(Optimism OP Stack)
-+ Push Protocol
-+ ETHPaymaster
-+ AirAccount 
-+ CometENS(ENS).
+**最终目标：** 打造一个能自我激励、自我发展的社区贡献与奖励生态系统，让每个社区成员的贡献都能被量化、被看见、被奖励。
 
-### Version
-0.1.1
+---
 
-### Abilities:
-1. Easy to get your Ethereum contract account by Email. ✓
-2. Create your community onchain in seconds. ✓（op+base）
-3. Launch a event and share with your members to join.（login and join）✓
-4. Drop event NFT by on-chain lists after event.(todo? batch send to fixed addresses?)
-5. Mint event NFT in any Superchain gasless.(Base gassless, paymaster deploy, airaccount support change network create account?) ✓
-6. Send and get on-chain message by EPNS protocol.(integration with Xu branch) ✓
+#### **第一阶段：MVP (最小可行产品) - 验证核心循环**
 
-### Security:
-1. Using your Email to create a contract account.
-2. Encrypt and verify every action by your fingerprint(passkey).
-3. Community account would not save too much assets, NFT, SBT or community points.
-4. Social recovery support(developing).
+**核心目标：** 用最简单的产品形态，验证最核心的商业逻辑——**“社区成员是否愿意为了积分（xPNTs）去完成社区发布的任务”**。
 
-### Infra
-1. Use SuperChain from OP to Base and more, autodeploy.
-2. Use ETHPaymaster and AirAccount support gasless and account life management.
-3. Use Push Protocol(EPSN, Ethereum Push Notification Service) to send and get community nonitfications.
-4. Mint PUSH TOKEN in testnet via [sepolia.etherscan.io](https://sepolia.etherscan.io/token/0x37c779a1564DCc0e3914aB130e0e787d93e21804#writeContract#F5)
+*   **产品功能：**
+    1.  **手动发布任务：** 社区所有者（您）可以通过一个极其简单的后台页面，手动输入任务的标题、描述和积分奖励值，然后发布到任务广场。
+    2.  **公开任务板：** 一个对所有人可见的公开页面，用列表形式展示所有“开放中”的任务。
+    3.  **链下申请流程：** 用户看到感兴趣的任务后，通过点击一个按钮（或在Discord/微信群里@管理员）来表达申请意向。这是一个链下的、非正式的申请。
+    4.  **人工指派与审核：** 您在后台（或在社群里）手动指定某个用户去完成任务。用户完成后，通过私信或邮件等方式，将成果（如文档链接、截图）发给您。您来人工审核。
+    5.  **手动发放积分：** 审核通过后，您需要手动操作一个简单的发奖工具（或直接操作合约），为该用户铸造（Mint）并发送对应的 xPNTs 积分。
+    6.  **初级商店：** 一个非常简单的展示页面，陈列1-3个可以用积分兑换的商品，例如：“一个特殊的社区身份组”、“与您30分钟的交流时间”、“一张社区纪念版数字图片”。兑换流程完全手动：用户联系您，您验证其积分余额后，手动交付商品。
 
-## Install
-### Install on local
-All data are saved on-chain. So you can run it anywhere with a one-key install script.
+*   **第一阶段成功指标：**
+    *   在一个月内，至少有10个任务被社区成员成功完成并领取了积分。
+    *   从早期用户那里获得积极的反馈，证明这个“任务换积分”的模式是有吸引力的。
 
-```
-git clone git@github.com:AAStarCommunity/Cos72.git
-```
+---
 
-### Access to AAStar version
-AAStar clones and runs a version online. It is open-source and free for all.
+#### **第二阶段：提升体验与效率 - 实现半自动化**
 
-# React + TypeScript + Vite
+**核心目标：** 将第一阶段中那些最耗费人力的手动环节产品化、自动化，从而降低您作为运营者的管理成本，并提升普通用户的参与体验。
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*   **产品功能：**
+    1.  **在线任务流转：** 将申请、指派、提交成果、审核等所有环节全部搬到线上。用户有自己的个人中心，可以追踪自己任务的进度。您则拥有一个管理后台，可以一站式处理所有任务。
+    2.  **一键发奖：** 在您的管理后台，审核用户提交的成果后，只需点击“批准并发送积分”按钮，系统就会自动调用智能合约完成积分发放，无需再手动操作。
+    3.  **自动化商店：** 商店升级为自助服务。用户可以在页面上点击“兑换”，系统自动验证其积分余额是否足够，如果足够，则自动扣除积分并交付商品（例如：通过机器人自动授予Discord身份组，或自动发送软件的下载链接）。
+    4.  **个人成就展示：** 每个用户拥有一个简单的个人主页，展示他们已完成的任务列表和获得的积分总数，建立初步的社区声望体系。
 
-Currently, two official plugins are available:
+*   **第二阶段成功指标：**
+    *   您管理任务和发放奖励的时间相比第一阶段减少50%以上。
+    *   由于流程更顺畅，每周完成的任务数量有显著提升。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+#### **第三阶段：扩展经济与社区治理**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**核心目标：** 引入更丰富的经济玩法和社区治理元素，让任务广场的生态变得更有活力和层次感。
 
-- Configure the top-level `parserOptions` property like this:
+*   **产品功能：**
+    1.  **引入“审核员”角色：** 您可以提拔社区中活跃且值得信赖的核心成员为“审核员”。他们将被授予权限，可以帮助审核一部分任务成果和批准积分发放，从而将您的权力下放，实现社区共治。
+    2.  **任务竞标模式：** 对于某些任务，允许多个用户同时申请。您可以根据申请者的历史成就（完成任务的数量、质量）来选择最合适的执行者。甚至可以尝试“悬赏模式”，让用户反向出价，看谁愿意用最少的积分来完成这个任务。
+    3.  **分级商店与限量商品：** 商店引入“等级”或“门槛”概念。某些稀有、高价值的商品，只有积分达到一定数量或完成过特定“成就任务”的用户才能看到或兑换。同时，推出“限量版”、“限时兑换”的商品，创造稀缺性。
+    4.  **任务提案与投票：** 开放任务创建的入口，任何社区成员都可以“提议”一个新任务，然后由所有积分持有者进行投票。当一个任务提案的得票数达到某个阈值后，它就会被自动发布到任务广场上。
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+*   **第三阶段成功指标：**
+    *   至少有3名社区成员成为了活跃的“审核员”。
+    *   第一个由社区投票产生的任务被成功完成。
+    *   商店里的某一个“限量版”商品被成功兑换完毕。
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+---
 
+#### **第四阶段：融入生态 (未来愿景)**
+
+**核心目标：** 将任务广场从一个独立的社区工具，提升为整个 `COS72` 生态系统的一个可插拔、可复用的核心经济组件。
+
+*   **未来方向：**
+    1.  **跨社区任务：** 允许一个社区向另一个社区发布任务，形成一个跨社区的协作网络。
+    2.  **积分即服务 (xPNTs as a Service):** 将 xPNTs 积分系统打包成一个标准化的服务。任何使用 `COS72` 构建的 dApp，都可以一键集成这个服务，快速拥有自己的社区积分经济模型。
+    3.  **链接真实价值：** 探索与外部世界的链接，例如允许积分兑换合作商家的优惠券、实体商品等，让社区积分拥有超越数字世界的实际价值。
+
+# V2
+产品计划：COS72 任务广场 (SuperPaymaster 融合版)**
+
+**最终目标：** 构建一个与 SuperPaymaster 理念一致的、去中心化的社区任务市场，它开放、有竞争、激励共享，并最终由社区驱动。
+
+---
+
+#### **第一阶段：MVP - 验证市场并播下种子**
+
+**核心目标：** 在验证“任务换积分”核心循环的同时，从第一天起就引入“开放市场”和“透明度”的 foundational principles。
+
+*   **功能调整：**
+    1.  **将“所有者”定义为第一个“服务商”：** 我们不再简单地称您为“管理员”，而是在产品中将您定义为平台上的第一个、经过官方认证的“任务发布服务商”。这为未来引入更多服务商奠定了概念基础。
+    2.  **建立公开透明的“奖励账本”：** 所有已完成的任务和积分发放记录，都会被记在一个公开的、不可篡改的账本上（MVP阶段可以是一个公开的Notion页面或链上事件日志），任何人都可以查询。这直接体现了 **透明度原则**。
+    3.  **引入“名义质押”与“声誉”概念：** 在产品中明确说明：社区所有者以其自身的“社区信誉”作为初始质押。通过按时、准确地发放任务奖励来逐步建立和提升其作为服务商的“声誉值”。
+    4.  **引入“协议收入”概念：** 在产品中明确展示，每完成一笔任务奖励，系统都会“名义上”抽取一小部分（例如1%）的积分放入“社区金库”，用于未来的生态发展。这提前向用户传达了 **共享经济激励** 的理念。
+    5.  （保持不变）任务的申请、审核和积分发放流程在初期仍由您手动完成。
+    6.  （保持不变）商店和兑换流程初期也为手动。
+
+*   **成功指标：**
+    *   （保持不变）一个月内至少10个任务被成功完成。
+    *   社区用户能够理解并接受“服务商”、“声誉”和“公开账本”这些新概念。
+
+---
+
+#### **第二阶段：构建开放市场**
+
+**核心目标：** 将核心流程自动化，并正式开放“任务发布”市场，让更多可信的实体成为服务商，形成内部竞争。
+
+*   **功能调整：**
+    1.  **建立“服务商注册”机制：** 不再是后台指定，而是创建一个公开的注册流程。任何想发布任务的个人或团队（例如其他社区的管理者）都可以申请成为“任务发布服务商”。这正式落地了 **开放市场原则**。
+    2.  **上线“声誉系统 V1”：** 每个服务商都有一个独立的资料页，展示其发布的任务总数、任务完成率、平均奖励发放时间等数据。用户在选择任务时，不仅看任务本身，也会参考发布者的声誉。
+    3.  **自动化“协议收入”：** “社区金库”的抽成将通过智能合约自动执行。每当有服务商发放奖励时，约定比例的费用会自动转入一个公开的金库地址，让 **共享激励** 模型真正运转起来。
+    4.  （保持不变）实现任务全流程线上化、自动化，并建立用户个人成就档案。
+
+*   **成功指标：**
+    *   至少有2个新的“任务发布服务商”成功入驻，并独立发布和完成了任务。
+    *   社区金库地址收到了第一笔自动化的协议收入。
+
+---
+
+#### **第三阶段：去中心化治理与经济深化**
+
+**核心目标：** 全面引入 SuperPaymaster 提案中的高级经济模型和去中心化治理机制。
+
+*   **功能调整：**
+    1.  **引入“服务商质押”机制：** 申请成为“任务发布服务商”的实体，必须质押一定数量的指定代币（例如ETH或未来的治理代币）。如果服务商作恶（例如，恶意不发放奖励），其质押的代币将被罚没。这完全落地了 **质押信任机制**。
+    2.  **启动“社区DAO治理”：** 引入一个轻量级的DAO（去中心化自治组织）框架。社区代币的持有者可以对平台的关键参数进行投票，例如“协议抽成比例”、“服务商最低质押门槛”等。这正式启动了 **去中心化治理**。
+    3.  **上线“任务竞标”模式：** 允许服务商发布“价格待定”的任务，由用户（或多个用户组成的“工作室”）反向报价，服务商选择最合适的方案。这会催生出更真实的市场动态。
+    4.  （保持不变）商店引入分级和限量玩法。
+
+*   **成功指标：**
+    *   社区通过DAO投票成功通过了第一个平台参数修改提案。
+    *   第一个通过“竞标模式”定价的任务被成功完成。
+
+---
+
+#### **第四阶段：成为生态基础设施 (未来愿景)**
+
+**核心目标：** 使“任务广场”本身成为一个可组合、可复用的核心组件，就像 SuperPaymaster 一样，成为整个 COS72 生态的基础设施。
+
+*   **未来方向：**
+    1.  **任务广场即服务：** 任何使用 `COS72` 构建的 dApp，都可以一键集成“任务广场”协议，快速为自己的应用建立一个内部的“微型经济体”。
+    2.  **跨DAO任务市场：** 允许不同的DAO之间互相发布任务，并以一种无需信任的方式结算，将任务广场扩展为一个服务于整个生态的B2B任务网络。
+    3.  **声誉成为“链上身份”：** 用户在任务广场建立的声誉（完成任务的质量、数量、可靠性）将成为其可携带的、全生态通用的“链上身份”的一部分，在其他应用中可以作为信用评分、投票权重等的依据。

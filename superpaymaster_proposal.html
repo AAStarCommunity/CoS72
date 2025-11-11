@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SuperPaymaster: 赋能您的Web3社区</title>
+        <style>
+            :root {
+                --primary-color: #2a6df5;
+                --secondary-color: #f0f6ff;
+                --text-color: #333;
+                --heading-color: #1a202c;
+                --border-color: #e2e8f0;
+                --white: #ffffff;
+                --shadow:
+                    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            }
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    "Helvetica Neue", Arial, sans-serif;
+                line-height: 1.6;
+                color: var(--text-color);
+                background-color: #f7fafc;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                max-width: 960px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            header {
+                text-align: center;
+                padding: 40px 20px;
+                background-color: var(--white);
+                border-bottom: 1px solid var(--border-color);
+            }
+            header h1 {
+                color: var(--heading-color);
+                font-size: 2.5rem;
+                margin-bottom: 10px;
+            }
+            header p {
+                font-size: 1.2rem;
+                color: #718096;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .section {
+                background-color: var(--white);
+                margin: 20px 0;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: var(--shadow);
+            }
+            h2 {
+                font-size: 1.8rem;
+                color: var(--heading-color);
+                border-bottom: 2px solid var(--primary-color);
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            h3 {
+                font-size: 1.4rem;
+                color: var(--heading-color);
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th,
+            td {
+                padding: 12px 15px;
+                text-align: left;
+                border-bottom: 1px solid var(--border-color);
+            }
+            th {
+                background-color: var(--secondary-color);
+                font-weight: 600;
+            }
+            tr:last-child td {
+                border-bottom: none;
+            }
+            tr:hover {
+                background-color: #f8f9fa;
+            }
+            .data-source {
+                background-color: #f0f6ff;
+                border-left: 4px solid var(--primary-color);
+                padding: 15px 20px;
+                margin: 20px 0;
+                font-size: 0.9rem;
+                color: #4a5568;
+            }
+            .data-source code {
+                background-color: #e2e8f0;
+                padding: 2px 6px;
+                border-radius: 4px;
+                font-family:
+                    "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+                    Courier, monospace;
+            }
+            .chart-container {
+                margin-top: 30px;
+                padding: 20px;
+                background: var(--secondary-color);
+                border-radius: 8px;
+            }
+            .chart-title {
+                text-align: center;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            .bar-chart {
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-end;
+                height: 150px;
+            }
+            .bar {
+                width: 15%;
+                background-color: var(--primary-color);
+                text-align: center;
+                color: var(--white);
+                position: relative;
+                border-radius: 4px 4px 0 0;
+                transition: height 0.5s ease-out;
+            }
+            .bar .label {
+                position: absolute;
+                bottom: -25px;
+                width: 100%;
+                left: 0;
+                font-size: 0.9rem;
+                color: var(--text-color);
+            }
+            .bar .value {
+                padding-top: 5px;
+                font-weight: bold;
+            }
+            .steps-container,
+            .models-container,
+            .cycle-container {
+                display: flex;
+                justify-content: space-between;
+                gap: 15px;
+                margin-top: 30px;
+            }
+            .step,
+            .model-card,
+            .cycle-step {
+                flex: 1;
+                background: var(--secondary-color);
+                padding: 20px;
+                border-radius: 8px;
+                border: 1px solid var(--border-color);
+                text-align: center;
+            }
+            .step h3,
+            .model-card h3,
+            .cycle-step h3 {
+                margin-top: 0;
+                color: var(--primary-color);
+                font-size: 1.2rem;
+            }
+            .step-icon {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+            .value-prop-list {
+                list-style-type: "✅";
+                padding-left: 20px;
+            }
+            .value-prop-list li {
+                padding-left: 10px;
+                margin-bottom: 10px;
+            }
+            .model-card ul {
+                text-align: left;
+                padding-left: 20px;
+                color: #4a5568;
+            }
+            .cta-footer {
+                text-align: center;
+                padding: 40px 20px;
+            }
+            .cta-button {
+                background-color: var(--primary-color);
+                color: var(--white);
+                padding: 15px 30px;
+                text-decoration: none;
+                font-size: 1.2rem;
+                font-weight: 600;
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+            }
+            .cta-button:hover {
+                background-color: #1c59d4;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>使用 SuperPaymaster 赋能您的Web3社区</h1>
+            <p>
+                为社区成员提供无感Gas体验，提升活跃度与凝聚力，同时为社区财库创造稳定收入。
+            </p>
+        </header>
+
+        <div class="container">
+            <div class="section">
+                <h2>机遇分析：精细化成本与潜在收入测算</h2>
+                <p>
+                    过去，对Gas成本的估算较为模糊。现在，通过对链上数据的精细化分析，我们可以更准确地描绘一个活跃用户的行为画像，并测算其成本，从而发现其中蕴藏的价值。
+                </p>
+
+                <h3>估算基础：典型L2活跃用户的月度行为分析</h3>
+                <p>
+                    我们定义一个典型的社区活跃成员，其每月在Layer
+                    2网络上的活动可能如下：
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>行为类型</th>
+                            <th>月度频率 (次)</th>
+                            <th>单次平均Gas成本 (美元)</th>
+                            <th>月度成本小计 (美元)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>发送代币/NFT (Transfer)</td>
+                            <td>10</td>
+                            <td>~$0.05</td>
+                            <td>$0.50</td>
+                        </tr>
+                        <tr>
+                            <td>DApp交互 (Swap, 投票等)</td>
+                            <td>10</td>
+                            <td>~$0.10</td>
+                            <td>$1.00</td>
+                        </tr>
+                        <tr>
+                            <td>领取/铸造凭证 (Mint/Claim)</td>
+                            <td>3</td>
+                            <td>~$0.15</td>
+                            <td>$0.45</td>
+                        </tr>
+                        <tr>
+                            <td><strong>总计</strong></td>
+                            <td><strong>23</strong></td>
+                            <td>-</td>
+                            <td><strong>$1.95</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="data-source">
+                    <p>
+                        <strong>数据来源说明:</strong> 以上Gas成本数据参考了
+                        <code>l2fees.info</code>
+                        等公开数据源在2025年Q4的平均值。实际费用会因具体的L2网络
+                        (如 Arbitrum, Optimism, Base 等) 和网络拥堵情况而波动。
+                    </p>
+                </div>
+
+                <h3>潜在收入匡算</h3>
+                <p>
+                    基于每位活跃用户每月约
+                    <strong>$1.95</strong>
+                    的Gas成本，社区通过SuperPaymaster提供代付服务并收取少量服务费（例如2%），可以将这笔纯消耗转化为社区财库的稳定收入。
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>社区规模 (活跃人数)</th>
+                            <th>每月总Gas消耗 (估算)</th>
+                            <th>潜在月收入 (按2%服务费)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>30</td>
+                            <td>$58.5</td>
+                            <td>$1.17</td>
+                        </tr>
+                        <tr>
+                            <td>50</td>
+                            <td>$97.5</td>
+                            <td>$1.95</td>
+                        </tr>
+                        <tr>
+                            <td>120</td>
+                            <td>$234.0</td>
+                            <td>$4.68</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="chart-container">
+                    <div class="chart-title">社区潜在月收入可视化 (美元)</div>
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 25%">
+                            <div class="value">$1.17</div>
+                            <div class="label">30 人社区</div>
+                        </div>
+                        <div class="bar" style="height: 42%">
+                            <div class="value">$1.95</div>
+                            <div class="label">50 人社区</div>
+                        </div>
+                        <div class="bar" style="height: 100%">
+                            <div class="value">$4.68</div>
+                            <div class="label">120 人社区</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 id="demand-opportunity">需求 = 机会：超越直接收入的价值</h3>
+                <p>
+                    或许您觉得这点直接收入微不足道，但其真正的价值在于：社区利用SuperPaymaster基础设施，为成员提供了Web2世界无法比拟的、真正去中心化的价值：
+                </p>
+                <ul class="value-prop-list">
+                    <li>
+                        <strong>匿名和隐私保护</strong>：让成员免受中心化Gas
+                        Sponsor的审查和价格操纵。
+                    </li>
+                    <li>
+                        <strong>降低参与门槛</strong
+                        >：成员无需再为了Gas费而持有碎片ETH或付出高额跨链成本，只需参与社区活动（如转发、参会）即可赚取Gas。
+                    </li>
+                    <li>
+                        <strong>顺滑的用户体验</strong
+                        >：提供无感支付Gas的Web2级顺滑体验，享受Web3的真正所有权。
+                    </li>
+                </ul>
+                <p>
+                    <strong
+                        >这些核心价值，完全建立在开源、无需许可的SuperPaymaster基础设施之上！</strong
+                    >
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>社区正循环：任务、积分与商店 (Tasks, xPNTs & Shops)</h2>
+                <p>
+                    除了基础的Gas代付，SuperPaymaster可以帮助您构建一个强大的、自给自足的社区经济正循环，让每个成员都能成为生态的贡献者和受益者。
+                </p>
+                <div class="cycle-container">
+                    <div class="cycle-step">
+                        <h3>第一环: 任务广场 (Tasks)</h3>
+                        <p>
+                            建立一个无需许可的任务平台。无论是内容创作、代码贡献、社区推广还是简单的每日签到，用户完成任务即可获得
+                            xPNTs 奖励。
+                        </p>
+                    </div>
+                    <div class="cycle-step">
+                        <h3>第二环: 社区积分 (xPNTs)</h3>
+                        <p>
+                            xPNTs
+                            是社区的内部价值凭证。它不仅可以用来抵扣链上操作的Gas费用，实现真正的“无感”体验，更可以作为社区内的“货币”流通。
+                        </p>
+                    </div>
+                    <div class="cycle-step">
+                        <h3>第三环: 社区商店 (Shops)</h3>
+                        <p>
+                            用户辛苦赚来的 xPNTs
+                            有了绝佳的消耗场景。在社区商店里，他们可以兑换独家周边、限量版NFT、服务折扣券，甚至是合作伙伴提供的真实商品。
+                        </p>
+                    </div>
+                </div>
+                <p style="margin-top: 30px">
+                    这个“贡献-奖励-消费”的闭环设计，极大地激励了用户的参与度。它将原本是成本的Gas费，转化为了驱动社区增长和凝聚力的燃料，实现了从“输血”到“造血”的根本转变。在微不足道的投入下，当吸引足够的海量用户，就可以构建您的Web3社区生态，在链上展开您社区的各种服务和产品。
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>解决方案：四步开启您的社区加油站</h2>
+                <p>
+                    SuperPaymaster
+                    提供了一套完整的开源工具栈，让任何社区都能轻松建立自己的
+                    "Gas 加油站"，管理和赞助成员的Gas费用。
+                </p>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-icon">🏛️</div>
+                        <h3>Register Community</h3>
+                        <p>
+                            Register your community on-chain with metadata and
+                            governance token.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">🔗</div>
+                        <h3>Bind MySBT</h3>
+                        <p>
+                            Deploy your Soul Bound Token for community identity
+                            verification.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">💎</div>
+                        <h3>Deploy xPNTs</h3>
+                        <p>
+                            Create your community gas token for payment
+                            abstraction.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">🚀</div>
+                        <h3>Launch Paymaster</h3>
+                        <p>
+                            Deploy your Paymaster via factory with one-click
+                            configuration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>选择适合您的模式：基础赞助 vs 高级经济</h2>
+                <p>我们提供两种灵活的模式，以满足不同社区的需求。</p>
+                <div class="models-container">
+                    <div class="model-card">
+                        <h3>基础赞助 (AOA)</h3>
+                        <p>
+                            最简单直接的模式，适合希望快速为成员提供便利的社区。
+                        </p>
+                        <ul>
+                            <li>直接为社区成员的交易支付Gas。</li>
+                            <li>可配置规则，如仅赞助与社区自身DApp的交互。</li>
+                            <li>快速启动，低管理成本。</li>
+                            <li>
+                                <strong>目标</strong>:
+                                提升用户体验，降低入门门槛。
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="model-card">
+                        <h3>高级经济 (AOA+)</h3>
+                        <p>
+                            构建一个可持续的内部经济系统，将Gas赞助转化为社区收入。
+                        </p>
+                        <ul>
+                            <li>发行社区专属的积分(xPNTs)，用于抵扣Gas。</li>
+                            <li>通过任务广场、社区活动等方式分发xPNTs。</li>
+                            <li>建立社区商店，让xPNTs可兑换真实价值。</li>
+                            <li>
+                                <strong>目标</strong>:
+                                创造经济闭环，提升社区凝聚力与财库收入。
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="cta-footer">
+            <h2>准备好提升您的社区了吗？</h2>
+            <p>
+                立即访问 SuperPaymaster
+                官网，了解更多技术细节，或加入我们开始构建。
+            </p>
+            <a
+                href="https://superpaymaster.aastar.io/"
+                class="cta-button"
+                target="_blank"
+                >了解更多</a
+            >
+        </footer>
+    </body>
+</html>
