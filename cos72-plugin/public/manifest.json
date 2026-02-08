@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "TeaMoTeam Community",
+  "version": "0.0.1",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": ["storage", "identity"],
+  "host_permissions": ["http://localhost:8787/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
+}

@@ -72,6 +72,13 @@ web_modules/
 # Yarn Integrity file
 .yarn-integrity
 
+# pnpm store (project-local)
+.pnpm-store/
+cos72-plugin/community-server/prisma/*.db
+cos72-plugin/community-server/prisma/*.db-journal
+cos72-plugin/community-server/prisma/*.sqlite
+cos72-plugin/community-server/prisma/*.sqlite3
+
 # dotenv environment variable files
 .env
 .env.development.local
