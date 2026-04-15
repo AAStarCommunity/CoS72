@@ -1,5 +1,6 @@
 # Cos72
-All contract are here： https://github.com/jhfnetboy/Cos72-contracts/tree/dev
+
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)All contract are here： https://github.com/jhfnetboy/Cos72-contracts/tree/dev
 ## Introduction
 
 Yet Another DAO/Community Tool, BUT: get a Gasless,NFT,Contract Account, and ENS, with your Email on any Super Chain. 
@@ -76,3 +77,6 @@ export default {
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
+## License
+
+Licensed under the [Apache License, Version 2.0](https://opensource.org/licenses/Apache-2.0). See [LICENSE](./LICENSE) for details.
