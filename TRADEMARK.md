@@ -1,6 +1,7 @@
 # MushroomDAO Trademark Policy
 
-> Last updated: 2026-04-15
+> Last updated: 2026-04-28
+> 中文版 / Chinese version: [TRADEMARK-zh.md](TRADEMARK-zh.md)
 
 ---
 
